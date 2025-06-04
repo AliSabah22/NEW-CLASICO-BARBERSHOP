@@ -1,3 +1,5 @@
+"use client";
+
 import { Navigation } from "@/components/layout/navigation";
 import { motion } from "framer-motion";
 

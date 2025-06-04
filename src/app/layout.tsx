@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   title: "Clasico Barbershop | Premium Grooming Experience",
   description: "Experience luxury grooming at Clasico Barbershop. Premium haircuts, beard trims, and traditional shaves in an elegant atmosphere.",
   keywords: "barbershop, luxury grooming, haircuts, beard trim, traditional shave, premium barbershop",
+  icons: {
+    icon: [
+      {
+        url: "/favicon.ico",
+        sizes: "any",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
