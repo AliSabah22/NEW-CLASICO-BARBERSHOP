@@ -84,7 +84,7 @@ export default function Services() {
               key={service.title}
               variants={itemVariants}
               whileHover={{ scale: 1.05 }}
-              className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-gold hover:shadow-xl transition-shadow"
+              className="bg-black rounded-xl shadow-lg p-6 border-l-4 border-gold hover:shadow-xl transition-shadow"
             >
               <div className="relative h-64">
                 <Image
