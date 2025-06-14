@@ -26,21 +26,28 @@ export default function Navigation() {
       }`}
     >
       <div className="container-custom">
-        <div className="flex items-center justify-center md:justify-between h-20 relative">
-          {/* Logo */}
-          <Link href="/" className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 flex items-center justify-center">
-            <Image
-              src="/Logo GD-Photoroom.png"
-              alt="Clasico Barbershop Logo"
-              width={90}
-              height={90}
-              priority
-              className="object-contain h-16 w-auto"
-            />
+        <div className="flex items-center justify-between h-20 relative">
+          {/* Left: Barbershop Name */}
+          <Link href="/" className="text-2xl font-display text-gold z-10">
+            Clasico Barbershop
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8 ml-auto">
+          {/* Center: Logo */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center z-0">
+            <Link href="/">
+              <Image
+                src="/Logo GD-Photoroom.png"
+                alt="Clasico Barbershop Logo"
+                width={90}
+                height={90}
+                priority
+                className="object-contain h-16 w-auto"
+              />
+            </Link>
+          </div>
+
+          {/* Right: Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8 ml-auto z-10">
             <Link href="/services" className="text-gold hover:text-gold/80 transition-colors">
               Services
             </Link>
@@ -63,7 +70,7 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-gold absolute right-0"
+            className="md:hidden text-gold absolute right-0 z-10"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <span className="sr-only">Open menu</span>
