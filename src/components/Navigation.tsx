@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,14 +26,21 @@ export default function Navigation() {
       }`}
     >
       <div className="container-custom">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-center md:justify-between h-20 relative">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-display text-gold">
-            Clasico Barbershop
+          <Link href="/" className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 flex items-center justify-center">
+            <Image
+              src="/Logo GD-Photoroom.png"
+              alt="Clasico Barbershop Logo"
+              width={90}
+              height={90}
+              priority
+              className="object-contain h-16 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8 ml-auto">
             <Link href="/services" className="text-gold hover:text-gold/80 transition-colors">
               Services
             </Link>
@@ -55,7 +63,7 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-gold"
+            className="md:hidden text-gold absolute right-0"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <span className="sr-only">Open menu</span>
