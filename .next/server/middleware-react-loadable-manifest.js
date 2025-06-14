@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST="{\"app/page.tsx -> @/components/sections/Booking\":{\"id\":\"app/page.tsx -> @/components/sections/Booking\",\"files\":[\"static/chunks/_app-pages-browser_src_components_sections_Booking_tsx.js\"]}}"

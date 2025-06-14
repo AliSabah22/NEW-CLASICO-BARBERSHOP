@@ -1,0 +1,33 @@
+{
+  "name": "new-clasico-barbershop",
+  "version": "1.0.0",
+  "description": "A Next.js project for a barbershop website.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_OPTIONS='--max-old-space-size=4096' next dev",
+    "dev:turbo": "NODE_OPTIONS='--max-old-space-size=4096' next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "analyze": "ANALYZE=true next build"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.2.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "critters": "^0.0.23",
+    "framer-motion": "^12.18.1",
+    "next": "^14.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^14.2.30",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3"
+  }
+}
