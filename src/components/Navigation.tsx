@@ -26,38 +26,40 @@ export default function Navigation() {
       }`}
     >
       <div className="container-custom">
-        <div className="flex items-center justify-between h-20 relative">
+        <div className="flex items-center h-64 px-0 relative">
           {/* Left: Barbershop Name */}
-          <Link href="/" className="text-2xl font-display text-gold z-10">
-            Clasico Barbershop
-          </Link>
+          <div className="flex-1 flex items-center">
+            <Link href="/" className="text-2xl font-display text-gold z-10 ml-0 pl-0">
+              Clasico Barbershop
+            </Link>
+          </div>
 
           {/* Center: Logo */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center z-0">
             <Link href="/">
               <Image
-                src="/Logo GD-Photoroom.png"
+                src="/images/navbar/Logo GD-Photoroom.png"
                 alt="Clasico Barbershop Logo"
-                width={90}
-                height={90}
+                width={240}
+                height={240}
                 priority
-                className="object-contain h-16 w-auto"
+                className="object-contain h-60 w-auto"
               />
             </Link>
           </div>
 
           {/* Right: Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8 ml-auto z-10">
-            <Link href="/services" className="text-gold hover:text-gold/80 transition-colors">
+          <div className="flex-1 hidden md:flex items-center justify-end space-x-8 z-10 ml-auto">
+            <Link href="/services" className="text-gold hover:text-gold/80 transition-colors hover:underline hover:underline-offset-8 hover:decoration-gold">
               Services
             </Link>
-            <Link href="/gallery" className="text-gold hover:text-gold/80 transition-colors">
+            <Link href="/gallery" className="text-gold hover:text-gold/80 transition-colors hover:underline hover:underline-offset-8 hover:decoration-gold">
               Gallery
             </Link>
-            <Link href="/about" className="text-gold hover:text-gold/80 transition-colors">
+            <Link href="/about" className="text-gold hover:text-gold/80 transition-colors hover:underline hover:underline-offset-8 hover:decoration-gold">
               About
             </Link>
-            <Link href="/contact" className="text-gold hover:text-gold/80 transition-colors">
+            <Link href="/contact" className="text-gold hover:text-gold/80 transition-colors hover:underline hover:underline-offset-8 hover:decoration-gold">
               Contact
             </Link>
             <Button 
