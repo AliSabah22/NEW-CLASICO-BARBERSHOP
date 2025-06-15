@@ -4,6 +4,9 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Image from 'next/image';
 import LuxuryButton from '../ui/LuxuryButton';
+import InstagramIcon from '../icons/InstagramIcon';
+import FacebookIcon from '../icons/FacebookIcon';
+import TwitterIcon from '../icons/TwitterIcon';
 
 const socialLinks = [
   { name: 'Instagram', url: 'https://instagram.com/clasico', icon: '/icons/instagram.svg' },
@@ -46,16 +49,6 @@ export default function Footer() {
                 className="grayscale hover:grayscale-0 transition-all duration-500"
               />
             </div>
-            <div className="space-y-4">
-              <p className="text-white/80">
-                123 Luxury Avenue<br />
-                New York, NY 10001
-              </p>
-              <p className="text-white/80">
-                Phone: (212) 555-0123<br />
-                Email: info@clasicobarbershop.com
-              </p>
-            </div>
           </div>
 
           {/* Right Column - Newsletter & Social */}
@@ -88,24 +81,40 @@ export default function Footer() {
 
             <div>
               <h4 className="text-lg font-display mb-6">Follow Us</h4>
-              <div className="flex gap-6">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/60 hover:text-accent transition-colors duration-300"
-                  >
-                    <Image
-                      src={social.icon}
-                      alt={social.name}
-                      width={24}
-                      height={24}
-                      className="w-6 h-6"
-                    />
-                  </a>
-                ))}
+              <div className="flex gap-6 mb-8">
+                <a
+                  href="https://instagram.com/clasico"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gold hover:text-gold/80 transition-colors duration-300"
+                >
+                  <InstagramIcon className="w-6 h-6" />
+                </a>
+                <a
+                  href="https://facebook.com/clasico"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gold hover:text-gold/80 transition-colors duration-300"
+                >
+                  <FacebookIcon className="w-6 h-6" />
+                </a>
+                <a
+                  href="https://twitter.com/clasico"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gold hover:text-gold/80 transition-colors duration-300"
+                >
+                  <TwitterIcon className="w-6 h-6" />
+                </a>
+              </div>
+              <div className="space-y-4">
+                <p className="text-white/80">
+                  3480 PLATINUM DR. UNIT 105, MISSISSAUGA, ON L5M 2S4
+                </p>
+                <p className="text-white/80">
+                  Phone: (647) 559-4641<br />
+                  Email: hello@clasicobarber.com
+                </p>
               </div>
             </div>
           </div>

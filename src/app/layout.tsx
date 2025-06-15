@@ -24,21 +24,21 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'Clásico Barbershop | Luxury Grooming Experience',
-  description: 'Experience the art of premium grooming at Clásico Barbershop. Where tradition meets innovation in a sophisticated atmosphere.',
+  title: 'Clasico Barbershop | Luxury Grooming Experience',
+  description: 'Experience the art of premium grooming at Clasico Barbershop. Where tradition meets innovation in a sophisticated atmosphere.',
   keywords: 'barbershop, luxury grooming, premium haircuts, beard trim, shaving, men\'s grooming',
-  authors: [{ name: 'Clásico Barbershop' }],
+  authors: [{ name: 'Clasico Barbershop' }],
   openGraph: {
-    title: 'Clásico Barbershop | Luxury Grooming Experience',
-    description: 'Experience the art of premium grooming at Clásico Barbershop. Where tradition meets innovation in a sophisticated atmosphere.',
+    title: 'Clasico Barbershop | Luxury Grooming Experience',
+    description: 'Experience the art of premium grooming at Clasico Barbershop. Where tradition meets innovation in a sophisticated atmosphere.',
     url: 'https://clasicobarbershop.com',
-    siteName: 'Clásico Barbershop',
+    siteName: 'Clasico Barbershop',
     images: [
       {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Clásico Barbershop',
+        alt: 'Clasico Barbershop',
       },
     ],
     locale: 'en_US',

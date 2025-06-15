@@ -40,16 +40,16 @@ export default function Navigation() {
               <Image
                 src="/images/navbar/Logo GD-Photoroom.png"
                 alt="Clasico Barbershop Logo"
-                width={180}
-                height={180}
+                width={240}
+                height={240}
                 priority
-                className="object-contain h-16 md:h-20 w-auto drop-shadow-lg"
+                className="object-contain h-24 md:h-28 w-auto drop-shadow-lg"
               />
             </Link>
           </div>
 
           {/* Right: Desktop Navigation */}
-          <div className="flex-1 hidden md:flex items-center justify-end gap-x-10 pr-2 md:pr-4 z-10">
+          <div className="hidden md:flex items-center gap-x-6 pr-4 md:pr-8 z-10">
             <Link href="/services" className="text-gold hover:text-gold/80 transition-colors hover:underline hover:underline-offset-8 hover:decoration-gold text-lg font-medium">
               Services
             </Link>

@@ -3,24 +3,24 @@
 import { ButtonHTMLAttributes } from "react";
 
 interface LuxuryButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline';
-  size?: 'sm' | 'md' | 'lg';
+  variant?: "primary" | "secondary" | "outline";
+  size?: "sm" | "md" | "lg";
   className?: string;
 }
 
 export default function LuxuryButton({
   children,
-  variant = 'primary',
-  size = 'md',
-  className = '',
+  variant = "primary",
+  size = "md",
+  className = "",
   ...props
 }: LuxuryButtonProps) {
-  const baseStyles = "relative overflow-hidden font-medium transition-all duration-300 transform hover:scale-102 active:scale-98";
-  
+  const baseStyles = "relative overflow-hidden font-medium transition-all duration-300 transform hover:scale-102 active:scale-98 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2";
+
   const variants = {
     primary: "bg-gold text-black hover:bg-gold/90",
     secondary: "bg-white/10 text-white hover:bg-white/20",
-    outline: "border-2 border-gold text-gold hover:bg-gold/10"
+    outline: "border-2 border-gold text-gold hover:bg-gold/10 bg-transparent"
   };
 
   const sizes = {
@@ -35,7 +35,7 @@ export default function LuxuryButton({
       {...props}
     >
       {children}
-      <div className="absolute inset-0 bg-white/20 transform -translate-x-full hover:translate-x-full transition-transform duration-600 ease-in-out" />
+      <span className="absolute inset-0 bg-white/10 opacity-0 hover:opacity-10 transition-opacity pointer-events-none" />
     </button>
   );
 }

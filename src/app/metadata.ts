@@ -1,12 +1,12 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Clásico Barbershop | Luxury Men\'s Grooming',
+  title: 'Clasico Barbershop | Luxury Men\'s Grooming',
   description: 'Experience premium grooming services at Clásico Barbershop. Our expert barbers provide luxury haircuts, beard trims, and grooming services in a sophisticated atmosphere.',
   keywords: 'barbershop, luxury grooming, men\'s haircut, beard trim, premium barbershop, classic barbershop, men\'s grooming',
-  authors: [{ name: 'Clásico Barbershop' }],
-  creator: 'Clásico Barbershop',
-  publisher: 'Clásico Barbershop',
+  authors: [{ name: 'Clasico Barbershop' }],
+  creator: 'PixelRush Sites',
+  publisher: 'PixelRush Sites',
   formatDetection: {
     email: false,
     address: false,
@@ -17,16 +17,16 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Clásico Barbershop | Luxury Men\'s Grooming',
+    title: 'Clasico Barbershop | Luxury Men\'s Grooming',
     description: 'Experience premium grooming services at Clásico Barbershop. Our expert barbers provide luxury haircuts, beard trims, and grooming services in a sophisticated atmosphere.',
     url: 'https://clasicobarbershop.com',
-    siteName: 'Clásico Barbershop',
+    siteName: 'Clasico Barbershop',
     images: [
       {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Clásico Barbershop - Luxury Men\'s Grooming',
+        alt: 'Clasico Barbershop - Luxury Men\'s Grooming',
       },
     ],
     locale: 'en_US',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Clásico Barbershop | Luxury Men\'s Grooming',
+    title: 'Clasico Barbershop | Luxury Men\'s Grooming',
     description: 'Experience premium grooming services at Clásico Barbershop. Our expert barbers provide luxury haircuts, beard trims, and grooming services in a sophisticated atmosphere.',
     images: ['/images/twitter-image.jpg'],
     creator: '@clasicobarbershop',
