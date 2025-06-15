@@ -21,15 +21,15 @@ export default function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-gold/20 shadow-sm ${
         isScrolled ? 'bg-black/90 backdrop-blur-sm' : 'bg-black'
       }`}
     >
       <div className="container-custom">
-        <div className="flex items-center h-64 px-0 relative">
+        <div className="relative flex items-center justify-between py-4 md:py-6">
           {/* Left: Barbershop Name */}
-          <div className="flex-1 flex items-center">
-            <Link href="/" className="text-2xl font-display text-gold z-10 ml-0 pl-0">
+          <div className="flex-1 flex items-center min-w-0">
+            <Link href="/" className="text-2xl md:text-3xl font-display text-gold tracking-wide z-10 pl-2 md:pl-4 whitespace-nowrap">
               Clasico Barbershop
             </Link>
           </div>
@@ -40,31 +40,31 @@ export default function Navigation() {
               <Image
                 src="/images/navbar/Logo GD-Photoroom.png"
                 alt="Clasico Barbershop Logo"
-                width={240}
-                height={240}
+                width={180}
+                height={180}
                 priority
-                className="object-contain h-60 w-auto"
+                className="object-contain h-16 md:h-20 w-auto drop-shadow-lg"
               />
             </Link>
           </div>
 
           {/* Right: Desktop Navigation */}
-          <div className="flex-1 hidden md:flex items-center justify-end space-x-8 z-10 ml-auto">
-            <Link href="/services" className="text-gold hover:text-gold/80 transition-colors hover:underline hover:underline-offset-8 hover:decoration-gold">
+          <div className="flex-1 hidden md:flex items-center justify-end gap-x-10 pr-2 md:pr-4 z-10">
+            <Link href="/services" className="text-gold hover:text-gold/80 transition-colors hover:underline hover:underline-offset-8 hover:decoration-gold text-lg font-medium">
               Services
             </Link>
-            <Link href="/gallery" className="text-gold hover:text-gold/80 transition-colors hover:underline hover:underline-offset-8 hover:decoration-gold">
+            <Link href="/gallery" className="text-gold hover:text-gold/80 transition-colors hover:underline hover:underline-offset-8 hover:decoration-gold text-lg font-medium">
               Gallery
             </Link>
-            <Link href="/about" className="text-gold hover:text-gold/80 transition-colors hover:underline hover:underline-offset-8 hover:decoration-gold">
+            <Link href="/about" className="text-gold hover:text-gold/80 transition-colors hover:underline hover:underline-offset-8 hover:decoration-gold text-lg font-medium">
               About
             </Link>
-            <Link href="/contact" className="text-gold hover:text-gold/80 transition-colors hover:underline hover:underline-offset-8 hover:decoration-gold">
+            <Link href="/contact" className="text-gold hover:text-gold/80 transition-colors hover:underline hover:underline-offset-8 hover:decoration-gold text-lg font-medium">
               Contact
             </Link>
             <Button 
               variant="default" 
-              className="bg-white text-black hover:bg-gold hover:text-white"
+              className="ml-2 bg-white text-black hover:bg-gold hover:text-white px-6 py-2 rounded-md font-semibold shadow-gold transition-all"
             >
               Book Now
             </Button>
@@ -72,12 +72,12 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-gold absolute right-0 z-10"
+            className="md:hidden text-gold absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <span className="sr-only">Open menu</span>
             <svg
-              className="h-6 w-6"
+              className="h-7 w-7"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
