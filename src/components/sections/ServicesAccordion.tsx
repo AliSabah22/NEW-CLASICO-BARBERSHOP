@@ -1,165 +1,166 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import clsx from "clsx";
 
-const categories = [
+const services = [
   {
-    emoji: "💈",
-    name: "Clasico Services",
-    services: [
-      "Hair & Beard Combos",
-      "Haircut & Beard",
-      "Haircut & Beard Trim Line-Up (Blade)",
-      "Haircut & Beard Trim Line-Up (Machine)",
-      "Haircut & Line-Up Beard (Blade)",
-      "Haircut & Line-Up (Machine)",
-      "Haircut & Hot Towel Shave (Blade)",
-      "Line-Up, Hair & Beard (Blade)",
+    category: "Clasico Services",
+    items: [
+      { name: "Clasico Haircut", price: "$35" },
+      { name: "Clasico Haircut & Beard", price: "$45" },
+      { name: "Clasico Haircut & Beard & Face Wax", price: "$55" },
+      { name: "Clasico Haircut & Beard & Face Wax & Threading", price: "$65" },
+      { name: "Clasico Haircut & Beard & Face Wax & Threading & Hair Color", price: "$75" },
+      { name: "Clasico Haircut & Beard & Face Wax & Threading & Hair Color & Hair Treatment", price: "$85" },
+      { name: "Clasico Haircut & Beard & Face Wax & Threading & Hair Color & Hair Treatment & Hair Styling", price: "$95" },
     ],
   },
   {
-    emoji: "✂️",
-    name: "Side Fades",
-    services: [
-      "Side Fade & Beard Trim",
-      "Side Fade & Beard Trim Line-Up (Blade)",
-      "Side Fade & Beard Trim Line-Up (Machine)",
-      "Side Fade & Line-Up Beard (Blade)",
-      "Side Fade & Line-Up Beard (Machine)",
-      "Side Fade & Hot Towel Shave (Blade)",
-      "Buzz Cut Combos",
-      "Buzz Cut & Beard Trim Line-Up (Blade)",
-      "Buzz Cut & Beard Trim Line-Up (Machine)",
+    category: "Side Fades",
+    items: [
+      { name: "Side Fade", price: "$30" },
+      { name: "Side Fade & Beard", price: "$40" },
+      { name: "Side Fade & Beard & Face Wax", price: "$50" },
+      { name: "Side Fade & Beard & Face Wax & Threading", price: "$60" },
+      { name: "Side Fade & Beard & Face Wax & Threading & Hair Color", price: "$70" },
+      { name: "Side Fade & Beard & Face Wax & Threading & Hair Color & Hair Treatment", price: "$80" },
+      { name: "Side Fade & Beard & Face Wax & Threading & Hair Color & Hair Treatment & Hair Styling", price: "$90" },
     ],
   },
   {
-    emoji: "🧼",
-    name: "Face Waxing / Threading",
-    services: [
-      "Ears Wax or Threading",
-      "Nose Waxing",
-      "Unibrow Threading",
-      "Eyebrows Waxing",
-      "Eyebrows Shaping (Blade)",
-      "Forehead Wax or Threading",
-      "Cheeks Wax or Threading",
-      "Full Face Wax or Threading",
-      "Beard Line-Up Wax or Threading",
-      "Upper Lip Wax or Threading",
-      "Chin Wax or Threading",
+    category: "Face Waxing/Threading",
+    items: [
+      { name: "Face Wax", price: "$20" },
+      { name: "Face Threading", price: "$25" },
+      { name: "Face Wax & Threading", price: "$35" },
     ],
   },
   {
-    emoji: "🧔",
-    name: "Beard Services",
-    services: [
-      "Beard Trim",
-      "Beard Trim (Scissors)",
-      "Line-Up Beard (Blade)",
-      "Line-Up Beard (Machine)",
-      "Beard Trim Line-Up (Blade)",
-      "Beard Trim Line-Up (Machine)",
-      "Hot Towel",
-      "Hot Towel Shave (Blade)",
-      "Beard Dye (Colouring)",
-      "Moustache Dye (Colouring)",
-      "Moustache Trim",
-      "Steam Face Shave",
+    category: "Beard Services",
+    items: [
+      { name: "Beard Trim", price: "$15" },
+      { name: "Beard Trim & Shape", price: "$25" },
+      { name: "Beard Trim & Shape & Color", price: "$35" },
     ],
   },
 ];
 
 export default function ServicesAccordion() {
-  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const [openCategory, setOpenCategory] = useState<string | null>(null);
+  const headerRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [headerHeights, setHeaderHeights] = useState<number[]>([]);
+  const [contentHeights, setContentHeights] = useState<number[]>([]);
 
-  // Keyboard accessibility: open/close with Enter/Space
-  const handleKeyDown = (e: React.KeyboardEvent, idx: number) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      setOpenIdx(openIdx === idx ? null : idx);
-    }
+  useLayoutEffect(() => {
+    setHeaderHeights(
+      headerRefs.current.map((el) => (el ? el.offsetHeight : 0))
+    );
+    setContentHeights(
+      contentRefs.current.map((el) => (el ? el.scrollHeight : 0))
+    );
+  }, [openCategory]);
+
+  const handleCategoryClick = (category: string) => {
+    setOpenCategory(openCategory === category ? null : category);
   };
 
   return (
-    <section className="relative bg-black min-h-screen py-16 px-4 md:px-0">
-      <div className="max-w-3xl mx-auto space-y-6">
-        {categories.map((cat, idx) => (
-          <div
-            key={cat.name}
-            id={`category-${idx}`}
-            className="rounded-2xl border border-gold/20 bg-black/80 shadow-lg overflow-hidden"
-          >
-            {/* Accordion Header */}
-            <button
+    <div className="w-full max-w-7xl mx-auto px-4 py-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {services.map((category, idx) => {
+          const isOpen = openCategory === category.category;
+          const headerHeight = headerHeights[idx] || 64; // fallback to 64px
+          const contentHeight = contentHeights[idx] || 0;
+          return (
+            <motion.div
+              key={category.category}
+              layout
+              animate={{
+                height: isOpen ? headerHeight + contentHeight : headerHeight,
+                boxShadow: isOpen
+                  ? '0 8px 32px 0 rgba(212,175,55,0.15)'
+                  : '0 2px 8px 0 rgba(212,175,55,0.05)',
+                borderColor: isOpen ? '#D4AF37' : 'rgba(212,175,55,0.2)',
+                scale: isOpen ? 1.02 : 1,
+              }}
+              transition={{
+                type: 'spring',
+                stiffness: 300,
+                damping: 30,
+              }}
               className={clsx(
-                "w-full flex items-center justify-between px-6 py-6 cursor-pointer group transition-all",
-                openIdx === idx ? "bg-gold/10" : "hover:bg-gold/5"
+                'w-full bg-black/95 rounded-lg shadow-xl border overflow-hidden',
+                isOpen ? 'border-gold/40' : 'border-gold/20 hover:border-gold/30'
               )}
-              onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
-              aria-expanded={openIdx === idx}
-              aria-controls={`panel-${idx}`}
-              tabIndex={0}
-              onKeyDown={e => handleKeyDown(e, idx)}
-              aria-label={cat.name}
+              style={{ minHeight: 0, paddingBottom: 0 }}
             >
-              <span className="flex items-center gap-3 text-2xl md:text-3xl font-display text-gold">
-                {cat.emoji}
-                <span className="text-white text-lg md:text-2xl font-display tracking-wide">{cat.name}</span>
-              </span>
-              {/* Chevron Icon */}
-              <motion.span
-                animate={{ rotate: openIdx === idx ? 90 : 0 }}
-                transition={{ duration: 0.3 }}
-                className="ml-2"
+              <button
+                ref={el => { headerRefs.current[idx] = el; }}
+                onClick={() => handleCategoryClick(category.category)}
+                className={clsx(
+                  'w-full px-6 py-4 flex items-center justify-between text-left transition-all duration-300',
+                  isOpen && 'bg-gold/5'
+                )}
+                aria-expanded={isOpen}
+                style={{ borderRadius: 'inherit' }}
               >
-                <svg width={28} height={28} viewBox="0 0 24 24" fill="none" className="text-gold">
-                  <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </motion.span>
-            </button>
-
-            {/* Accordion Panel */}
-            <AnimatePresence initial={false}>
-              {openIdx === idx && (
-                <motion.div
-                  id={`panel-${idx}`}
-                  initial="collapsed"
-                  animate="open"
-                  exit="collapsed"
-                  variants={{
-                    open: { height: "auto", opacity: 1 },
-                    collapsed: { height: 0, opacity: 0 },
-                  }}
-                  transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-                  className="overflow-hidden"
-                  aria-labelledby={`category-${idx}`}
-                  role="region"
+                <motion.h3
+                  layout="position"
+                  className="font-playfair text-xl text-gold"
                 >
-                  <ul className="divide-y divide-gold/10">
-                    {cat.services.map((service, sIdx) => (
-                      <li
-                        key={service}
-                        className={clsx(
-                          "group flex items-center justify-between px-8 py-5 transition-all duration-200",
-                          "hover:bg-gold/5 hover:shadow-gold/20"
-                        )}
-                        tabIndex={0}
-                        aria-label={service}
-                      >
-                        <span className="text-white text-lg md:text-xl font-medium font-display group-hover:underline group-hover:decoration-gold group-hover:underline-offset-4 transition-all">
-                          {service}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                  {category.category}
+                </motion.h3>
+                <motion.div
+                  animate={{ rotate: isOpen ? 180 : 0 }}
+                  transition={{ duration: 0.4, ease: 'easeInOut' }}
+                >
+                  <ChevronDown className="w-5 h-5 text-gold" />
                 </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        ))}
+              </button>
+              <div
+                ref={el => { contentRefs.current[idx] = el; }}
+                style={{
+                  opacity: isOpen ? 1 : 0,
+                  pointerEvents: isOpen ? 'auto' : 'none',
+                  transition: 'opacity 0.3s',
+                }}
+              >
+                {isOpen && (
+                  <motion.div
+                    key="content"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="px-6 pb-4 space-y-3"
+                  >
+                    {category.items.map((item, index) => (
+                      <motion.div
+                        key={item.name}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{
+                          duration: 0.3,
+                          delay: index * 0.05,
+                          ease: 'easeOut',
+                        }}
+                        className="flex justify-between items-center py-2 border-b border-gold/10 last:border-0"
+                      >
+                        <span className="text-white/90 font-inter">{item.name}</span>
+                        <span className="text-gold font-inter">{item.price}</span>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                )}
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
-    </section>
+    </div>
   );
 } 
